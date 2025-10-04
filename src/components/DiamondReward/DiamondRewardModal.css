@@ -1,0 +1,503 @@
+/* Simple Transparent Modal Styles */
+.simple-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10001;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.simple-modal-content {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 60px 40px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.treasure-content {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+/* Image Container */
+.simple-image-container {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.simple-reward-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 6px solid rgba(255, 215, 0, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 215, 0, 0.3);
+  animation: gentleFloat 3s ease-in-out infinite;
+  object-fit: cover;
+}
+
+.treasure-image {
+  border-color: rgba(255, 107, 53, 0.8);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(255, 107, 53, 0.3);
+}
+
+/* Badges */
+.simple-count-badge {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(255, 255, 255, 0.3);
+  animation: popIn 0.6s ease-out 0.5s both;
+}
+
+.simple-treasure-badge {
+  position: absolute;
+  top: -20px;
+  right: -30px;
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #333;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.4);
+  animation: popIn 0.6s ease-out 0.5s both;
+}
+
+/* Text Container */
+.simple-text-container {
+  color: white;
+}
+
+.simple-congratulations {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.treasure-title {
+  background: linear-gradient(45deg, #ff6b35, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-bottom: 10px;
+}
+
+.simple-message {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  line-height: 1.4;
+  opacity: 0.95;
+}
+
+.simple-bonus-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+  margin: 10px 0 0 0;
+  animation: bonusGlow 2s ease-in-out infinite alternate;
+}
+
+/* Loading States */
+.simple-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.simple-spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top: 6px solid #ffd700;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.simple-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.simple-diamond-icon,
+.simple-treasure-icon {
+  font-size: 80px;
+  opacity: 0.8;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(180deg);
+  }
+  80% {
+    transform: scale(1.2) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes textGlow {
+  0% {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes bonusGlow {
+  0% {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 0 0 5px rgba(255, 215, 0, 0.5);
+  }
+  100% {
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 215, 0, 0.8);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .simple-modal-content {
+    padding: 40px 30px;
+    margin: 20px;
+  }
+
+  .simple-reward-image {
+    width: 160px;
+    height: 160px;
+  }
+
+  .simple-congratulations {
+    font-size: 32px;
+  }
+
+  .simple-message {
+    font-size: 20px;
+  }
+
+  .simple-bonus-text {
+    font-size: 18px;
+  }
+
+  .simple-count-badge,
+  .simple-treasure-badge {
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .simple-modal-content {
+    padding: 30px 20px;
+  }
+
+  .simple-reward-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .simple-congratulations {
+    font-size: 28px;
+  }
+
+  .simple-message {
+    font-size: 18px;
+  }
+
+  .simple-bonus-text {
+    font-size: 16px;
+  }
+}
+
+/* Auto-close animation (optional) */
+.simple-modal-content {
+  cursor: pointer;
+}
+
+.simple-modal-content:hover {
+  transform: scale(1.02);
+  transition: transform 0.3s ease;
+}
+
+/* Treasure Contact Section */
+.treasure-contact-section {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  align-items: center;
+}
+
+/* WhatsApp Contact Button - Yellow & Smaller */
+.whatsapp-contact-btn {
+  background: linear-gradient(45deg, #ffd700, #ffed4e);
+  color: #333;
+  border: none;
+  border-radius: 40px;
+  padding: 14px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3),
+    0 0 0 2px rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  animation: yellowPulse 2s ease-in-out infinite;
+}
+
+.whatsapp-contact-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.whatsapp-contact-btn:hover::before {
+  left: 100%;
+}
+
+.whatsapp-contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4),
+    0 0 0 3px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(45deg, #ffed4e, #ffd700);
+}
+
+.whatsapp-contact-btn:active {
+  transform: translateY(0);
+}
+
+.whatsapp-icon {
+  font-size: 18px;
+  animation: phoneRing 1s ease-in-out infinite;
+}
+
+.phone-number {
+  font-size: 14px;
+  font-weight: 600;
+  opacity: 0.8;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 3px 10px;
+  border-radius: 15px;
+  margin-right: 6px;
+}
+
+/* Simple Close Button - Smaller */
+.simple-close-btn {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 40px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 120px;
+}
+
+.simple-close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.simple-close-btn:active {
+  transform: translateY(0);
+}
+
+/* Updated Animations - Yellow Theme */
+@keyframes yellowPulse {
+  0% {
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.2), 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.2), 0 0 0 8px rgba(255, 215, 0, 0);
+  }
+  100% {
+    box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3),
+      0 0 0 2px rgba(255, 255, 255, 0.2), 0 0 0 0 rgba(255, 215, 0, 0);
+  }
+}
+
+@keyframes phoneRing {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-8deg);
+  }
+  75% {
+    transform: rotate(8deg);
+  }
+}
+
+/* Responsive adjustments - Smaller sizes */
+@media (max-width: 768px) {
+  .treasure-contact-section {
+    margin-top: 25px;
+    gap: 10px;
+  }
+
+  .whatsapp-contact-btn {
+    padding: 12px 20px;
+    font-size: 15px;
+    min-width: 200px;
+  }
+
+  .phone-number {
+    font-size: 13px;
+  }
+
+  .simple-close-btn {
+    padding: 8px 20px;
+    font-size: 13px;
+    min-width: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .whatsapp-contact-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    min-width: 180px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .phone-number {
+    font-size: 12px;
+    margin-right: 0;
+  }
+
+  .simple-close-btn {
+    padding: 8px 18px;
+    font-size: 12px;
+    min-width: 90px;
+  }
+
+  .whatsapp-icon {
+    font-size: 16px;
+  }
+}
+
+/* Enhanced treasure content - Adjusted for smaller buttons */
+.treasure-content {
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  padding: 50px 40px 35px 40px;
+}
+
+@media (max-width: 768px) {
+  .treasure-content {
+    padding: 35px 30px 25px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .treasure-content {
+    padding: 25px 20px 20px 20px;
+  }
+}

@@ -1,0 +1,122 @@
+.contact_page {
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 60px);
+}
+
+.contact_page .banner_contact {
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+  height: 50vh;
+  width: 100%;
+
+  background-image: linear-gradient(to right, rgb(255, 148, 114), var(--main-color));
+}
+
+.contact_page .contact_content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 1200px;
+  max-width: 90%;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  margin-top: -320px;
+  z-index: 99 !important;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.contact_content .left {
+  width: 500px;
+}
+
+.contact_content form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.left .contact_form h4 {
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--main-color);
+}
+
+.left .contact_form p {
+  color: #555;
+  font-size: 18px;
+}
+
+.left .contact_form form input,
+.left .contact_form form textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+}
+
+.left .contact_form form button {
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.contact_page .right {
+  text-align: center;
+  width: 40%;
+}
+
+.contact_page .right img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.contact_page .right>div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.contact_page .right>div>p {
+  margin: 0px;
+  color: var(--main-color);
+}
+
+.contact_page .right>div>div {
+  border: 2px solid var(--main-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--main-color);
+}
+
+@media (max-width:992px) {
+  .contact_page .contact_content .left {
+    width: 100%;
+  }
+
+  .contact_page .contact_content .right {
+    width: 100%;
+    order: -1;
+  }
+
+  .contact_page .contact_content .right img {
+    width: 500px;
+    max-width: 100%;
+  }
+}

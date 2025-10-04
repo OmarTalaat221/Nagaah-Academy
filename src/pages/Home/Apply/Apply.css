@@ -1,0 +1,36 @@
+.container .ApplyContain .hrAfter {
+    position: relative;
+}
+
+.container .ApplyContain .hrAfter::after {
+    position: absolute;
+    content: "";
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: rgba(6, 23, 40, 0.235);
+    height: 120px;
+    width: 1px;
+}
+
+@media screen and (max-width: 992px) {
+
+    .container .ApplyContain .hrAfter::after {
+        position: absolute;
+        content: "";
+        right: 5px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        background-color:inherit;
+        height: 120px;
+        width: 1px;
+    }
+}

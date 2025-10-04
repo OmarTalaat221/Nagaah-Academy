@@ -1,0 +1,326 @@
+.schedule-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+  direction: rtl;
+}
+
+.week-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.schedule-grid {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.schedule-header {
+  display: table-row;
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.schedule-row {
+  display: table-row !important;
+}
+
+.schedule-cell {
+  display: table-cell;
+  border: 1px solid #ffd90091;
+  padding: 10px;
+  vertical-align: top;
+  position: relative;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(59, 0, 59, 0.8);
+  color: white;
+  min-width: 100px;
+}
+
+.time-header {
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(59, 0, 59, 0.6);
+  color: white;
+  min-width: 150px;
+}
+
+.day-cell {
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(59, 0, 59, 0.4);
+  color: white;
+}
+
+.time-cell {
+  min-height: 80px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.time-cell:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.lesson-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(59, 0, 59, 0.5) 100%
+  );
+  border: 1px solid #ffd700;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.lesson-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lesson-time {
+  font-size: 0.75rem;
+  margin-bottom: 2px;
+}
+
+.lesson-duration {
+  margin-right: 4px;
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+.lesson-group-type {
+  font-size: 0.7rem;
+  margin-top: 2px;
+  padding: 2px 5px;
+  border-radius: 10px;
+  display: inline-block;
+  background-color: rgba(255, 215, 0, 0.2);
+}
+
+/* List view styles */
+.lessons-list {
+  direction: rtl;
+}
+
+.lesson-list-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.1) 0%,
+    rgba(59, 0, 59, 0.8) 100%
+  );
+  border: 1px solid #ffd700;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+  color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.lesson-list-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.lesson-list-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.lesson-list-date {
+  font-size: 0.9rem;
+  margin-bottom: 4px;
+}
+
+.lesson-list-time {
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.lesson-list-course {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: #ffd700;
+}
+
+.lesson-list-details {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.group-type {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+}
+
+.group-type.small {
+  background-color: rgba(0, 128, 0, 0.3);
+  border: 1px solid rgba(0, 128, 0, 0.5);
+}
+
+.group-type.large {
+  background-color: rgba(0, 0, 255, 0.3);
+  border: 1px solid rgba(0, 0, 255, 0.5);
+}
+
+.request-type {
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  background-color: rgba(255, 215, 0, 0.3);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+}
+
+.lesson-list-desc {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  line-height: 1.4;
+  margin-top: 8px;
+}
+
+/* Add lesson button */
+.add-lesson-btn {
+  background-color: #ffd700 !important;
+  color: #3b003b !important;
+  border: none !important;
+  font-weight: bold !important;
+}
+
+.add-lesson-btn:hover {
+  background-color: #e6c200 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* RTL form styling */
+.rtl-form {
+  direction: rtl;
+  text-align: right;
+}
+
+.rtl-form .ant-form-item-label {
+  text-align: right;
+}
+
+/* Modal Styles */
+.custom-modal .ant-modal-content,
+.custom-modal .ant-modal-header {
+  background-color: #3b003b;
+  color: white;
+}
+
+.custom-modal .ant-modal-title {
+  color: #ffd700;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+}
+
+.custom-modal .ant-modal-close {
+  color: #ffd700;
+}
+
+.custom-modal .ant-modal-close:hover {
+  color: #fff !important;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.custom-input {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 215, 0, 0.5) !important;
+  color: white !important;
+  border-radius: 8px !important;
+}
+
+.custom-input:focus {
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2) !important;
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.modal-submit-button {
+  background: linear-gradient(135deg, #ffd700, #e6c200);
+  color: #3b003b;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #ffd700, #e6c200) !important;
+  color: #3b003b !important;
+}
+
+.modal-submit-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Ant Design Switch Override */
+.ant-switch {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.ant-switch-checked {
+  background-color: #ffd700 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .schedule-container {
+    margin-top: 10px;
+  }
+
+  .time-cell {
+    height: 80px;
+  }
+
+  .lesson-card {
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+}

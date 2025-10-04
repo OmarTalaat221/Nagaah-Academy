@@ -1,0 +1,129 @@
+.examQuestion_container {
+  box-shadow: rgba(22, 22, 22, 0.336) 0px 7px 29px 0px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px auto;
+  padding: 40px 30px;
+
+  width: 100%;
+  border-radius: 20px;
+  max-height: 100vh !important;
+  background: linear-gradient(#3b003b, #3b003b) padding-box,
+    linear-gradient(45deg, #ffd700, #fffb7d, #ffd700) border-box;
+  border: 3px solid transparent;
+}
+
+.examQuestion_container ul {
+  padding-left: 0px !important;
+}
+
+.correct_answer {
+  background-color: rgba(9, 226, 9, 0.527) !important;
+  color: white !important;
+  border: 1px solid #ffd700 !important;
+}
+
+.wrong_answer {
+  background-color: rgba(255, 0, 0, 0.176) !important;
+  border: 1px solid #ffd700 !important;
+  color: white !important;
+}
+
+.disabled {
+  background-color: rgba(128, 128, 128, 0.699) !important;
+  border: 1px solid rgba(128, 128, 128, 0.699) !important;
+  color: white !important;
+}
+
+:disabled {
+  color: #000 !important;
+  cursor: not-allowed;
+}
+.floating-action-button-container {
+  z-index: 1193123 !important;
+}
+
+.q_map {
+  width: 25%;
+  height: 88vh;
+  background-color: #9e67d6;
+  position: absolute;
+  top: 85px;
+  left: 0;
+}
+
+.submet_ans_btn {
+  background: linear-gradient(45deg, green, rgb(109, 248, 109), green);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid rgb(43, 146, 43);
+  color: white !important;
+
+  font-family: "Arial", sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 rgb(1, 71, 1), 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 7px 20px !important;
+}
+
+.prev_ans_btn {
+  background: linear-gradient(
+    45deg,
+    rgb(0, 102, 255),
+    rgb(171, 198, 255),
+    rgb(0, 102, 255)
+  );
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #00637c;
+  color: white !important;
+
+  font-family: "Arial", sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #025368, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 7px 20px !important;
+}
+
+.q_map_title {
+  font-size: 30px;
+  color: white;
+  font-weight: bold;
+}
+
+@media (max-width: 892px) {
+  /* .banner2 .swiperPos,
+  section.index-banner {
+    height: 70vh !important;
+  } */
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: fit-content !important;
+    object-fit: contain !important;
+  }
+  .features.row.justify-content-center.w-75 {
+    z-index: 11 !important;
+    position: relative;
+  }
+}
+/* @media (max-width: 592px) {
+  .banner2 .swiperPos,
+  section.index-banner,
+  .banner2 .swiperPos .swiper-wrapper,
+  .banner2 .swiperPos .swiper {
+    height: 25vh !important;
+  }
+  section.index-banner {
+    z-index: 1223 !important
+  ;
+  }
+} */

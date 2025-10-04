@@ -1,0 +1,70 @@
+.examcontent_header {
+    padding: 10px 20px;
+    border: 1px  solid #27be9f;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.examcontent_header h2 {
+    color: #27be9f;
+    margin: 10px 0px;
+    font-size: 20px !important;
+}
+
+.examcontent_header  p {
+    padding: 0px;
+    margin: 0px;
+    font-size: 15px;
+}
+
+.examcontent_container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.examcontent_header form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.examcontent_header form .examcontent_answer_card {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.examcontent_note {
+    padding: 10px 20px;
+    border: 1px  solid #27be9f;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.examcontent_note h2{
+    color: #27be9f;
+    text-align: center;
+    font-size: 23px !important;
+    font-weight: bold;
+}
+
+.examcontent_note p {
+    width: 50%;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.examcontent_container  button {
+    background-color: #27be9f;
+    color: white;
+    width: fit-content;
+    border: 1px solid #27be9f;
+    padding: 10px 50px;
+    border-radius: 20px;
+    margin: 0px auto;
+}

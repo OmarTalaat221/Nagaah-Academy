@@ -1,0 +1,125 @@
+.allcourses {
+}
+
+.my-course-card {
+  width: 30%;
+
+  background-color: #3b003b;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 15px;
+  background: linear-gradient(#3b003b, #3b003b) padding-box,
+    linear-gradient(45deg, #ffd700, #fffb7d, #ffd700) border-box;
+  border: 3px solid transparent;
+  margin: 10px 0;
+  transition: 0.3s ease;
+  box-shadow: 0px 5px 10px 0px black;
+  cursor: pointer;
+}
+
+.my-course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 5px 10px 0px rgb(129, 129, 129);
+}
+
+.allcourses .courses_content {
+  /* display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: space-around;
+  row-gap: 20px;
+  width: 1000px;
+  max-width: 100%;
+  margin: auto;
+  margin-top: 30px; */
+
+  display: flex;
+  /* grid-gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); */
+  align-items: center;
+  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
+  font-family: "Tajawal", sans-serif;
+  justify-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.mytokenImage {
+  display: block;
+
+  height: 400px;
+  margin: auto;
+}
+
+@media (max-width: 767px) {
+  .allcourses {
+  }
+}
+
+.empty {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.empty .icon {
+  margin-bottom: 1rem;
+  display: flex;
+  height: 8rem;
+  width: 8rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: #f3f4f6;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  font-size: 3rem;
+  line-height: 1;
+  --tw-text-opacity: 1;
+  color: #d1d5db;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+@media (max-width: 1200px) {
+  .allcourses .courses_content {
+    --auto-grid-min-size: 16rem;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .allcourses .courses_content {
+    --auto-grid-min-size: 15rem;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .allcourses .courses_content {
+    --auto-grid-min-size: 15rem;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .allcourses .courses_content {
+    --auto-grid-min-size: 15rem;
+    justify-items: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .allcourses .courses_content {
+    --auto-grid-min-size: 17rem;
+    justify-items: center;
+    justify-items: center;
+  }
+}

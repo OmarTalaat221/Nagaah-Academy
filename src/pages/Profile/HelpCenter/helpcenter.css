@@ -1,0 +1,34 @@
+.help_center {
+  text-decoration: none;
+}
+
+.help_center .help_app {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  background-color: #dedefe;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.help_app .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.help_app .right svg {
+  color: var(--main-color);
+  font-size: 23px;
+}
+
+.help_app .right h4 {
+  color: black;
+  font-size: 18px;
+}
+
+.help_app .right>* {
+  margin: 0px;
+}

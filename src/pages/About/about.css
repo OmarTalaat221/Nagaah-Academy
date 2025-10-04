@@ -1,0 +1,111 @@
+.big-container {
+  background-image: url(../../assets/nagaah_bg.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px 0;
+}
+
+.about-content-container {
+  width: 80% !important;
+  margin: auto !important;
+
+  align-items: center;
+}
+
+.main-text {
+  color: white;
+}
+
+.textContain h6 .fa-check {
+  transition: all 0.3s ease;
+  color: white;
+}
+.textContain h6:hover .fa-check {
+  background-color: var(--main-color) !important;
+  color: white;
+}
+
+button.btn.custome:hover {
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  background: white;
+}
+
+button.btn.custome:hover::after {
+  height: 100%;
+}
+
+button.btn.custome::after {
+  content: "";
+
+  background: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  border-radius: 4px;
+  height: 0;
+  transition: 0.2s ease-in-out;
+}
+
+button.btn.custome {
+  background: var(--main-color);
+  position: relative;
+  width: 190px;
+  margin: 59px auto 10px;
+  padding: 10px;
+  border: 0.1px solid transparent;
+  border-radius: 4px;
+
+  color: white;
+}
+
+.about_container_row {
+  display: flex !important;
+}
+
+.about_container {
+  padding-bottom: 20px;
+  position: relative;
+}
+
+@media (max-width: 1000px) {
+  .about_container_row {
+    display: block !important;
+  }
+  .about_container_row2 {
+    width: 100% !important;
+  }
+  .about_container_row img {
+    width: 400px !important;
+    margin: 20px auto !important;
+  }
+
+  .textContain {
+    width: 100% !important;
+    margin: 15px auto;
+  }
+  .textContain h1 {
+    width: 100% !important;
+    margin: auto;
+    text-align: center;
+  }
+  .textContain p {
+    width: 100% !important;
+    margin: auto;
+    text-align: center;
+  }
+
+  .textContain {
+    padding: 0px !important;
+    margin: 0px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .about_container_row img {
+    width: 300px !important;
+    margin: 20px auto !important;
+  }
+}

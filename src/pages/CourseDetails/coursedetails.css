@@ -1,0 +1,115 @@
+.coursedetails_page {
+  margin-top: 10px;
+}
+
+.coursedetails_container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: wrap;
+}
+
+.coursedetails_container.full_wid {
+  margin: auto;
+}
+
+.coursedetails_container .left {
+  width: 100%;
+  padding: 10px;
+}
+
+.coursedetails_container .left.m_au {
+  margin: auto;
+}
+
+.coursedetails_container .right {
+  width: 29%;
+  padding: 10px;
+  position: relative;
+}
+
+.coursedetails_container .right.no_wid {
+  display: none;
+}
+
+.course_videos {
+  width: 90%;
+  margin: auto;
+  padding: 40px;
+}
+
+.course_videos_panner {
+  width: 100%;
+  height: 80vh;
+  background-color: red;
+  display: flex;
+  background-image: url("../../assets/course_panner.jpg");
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 4px solid #fb8e00;
+}
+
+.course_videos p {
+  width: 100%;
+}
+
+.units {
+  width: 100%;
+
+  margin: 15px;
+  padding: 20;
+  border-radius: 10px;
+  box-shadow: 0 15px 25px #0000001a;
+  border: 0.1px solid rgba(182, 182, 182, 0.61);
+}
+
+.vid_title {
+  width: 100%;
+  border-bottom: 0.1px solid #6121a0;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  color: black !important;
+}
+
+.vid_title:hover {
+  background-color: #fb9700;
+}
+
+.subject_teacher {
+  width: 20%;
+  border-radius: 10px;
+  margin: 15px;
+  padding-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(90deg, #79777a, #3b003b);
+  color: white;
+}
+
+.subject_teacher:hover {
+  box-shadow: 0 15px 25px #0000001a;
+  transform: translateY(-10px);
+}
+
+@media (max-width: 992px) {
+  .coursedetails_container .left,
+  .coursedetails_container .right {
+    width: 800px;
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .coursedetails_container .left,
+  .coursedetails_container .right {
+    width: 100%;
+  }
+
+  .coursedetails_container {
+    padding: 0px;
+  }
+}

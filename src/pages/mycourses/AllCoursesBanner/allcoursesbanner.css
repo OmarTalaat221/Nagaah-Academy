@@ -1,0 +1,90 @@
+.allcourses_banner_comp {
+  min-height: 40vh;
+
+  position: relative;
+}
+
+.allcourses_banner_comp .page_name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--main-color);
+  color: white;
+}
+
+.allcourses_banner_comp {
+  padding: 29px;
+}
+
+.allcourses_banner_comp .page_name h4 {
+  font-size: 50px;
+  font-weight: 700;
+}
+
+.courses_type select {
+  width: 500px !important;
+  max-width: 100%;
+  margin: auto;
+  margin-bottom: 10px !important;
+}
+
+.courses_type {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.courses_type h5 {
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+.courses_type h5.active {
+  border-bottom: 2px solid var(--main-color);
+  color: red;
+}
+
+@media (max-width: 992px) {
+  .courses_type {
+    margin: auto;
+  }
+
+  .courses_type select {
+    width: 90% !important;
+    margin: auto;
+    margin-bottom: 10px !important;
+  }
+}
+
+.gridCoursesTopics .topicButton.active {
+  background: linear-gradient(90deg, #ff8180 0%, #e94168 100%) !important;
+  color: white;
+}
+
+.gridCoursesTopics .topicButton {
+}
+.gridCoursesTopics .topicButton span.star svg {
+  color: white !important;
+  fill: white;
+}
+.gridCoursesTopics .topicButton {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: rgb(217 217 217 / 64%);
+  border-radius: 7px;
+  align-items: center;
+  display: flex;
+  gap: 10px;
+}
+.gridCoursesTopics {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,321 @@
+.header,
+.container2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  width: 100%;
+  top: 0px;
+  z-index: 13;
+  padding: 10px !important;
+
+  direction: rtl !important;
+  color: white;
+  /* background-image: url(""); */
+}
+
+.container2 {
+  height: 10vh;
+}
+
+.header {
+  padding: 10px 20px;
+  background: linear-gradient(#3b003b, #3b003b) padding-box,
+    linear-gradient(45deg, #ffd700, #fffb7d, #ffd700) border-box;
+  border: 3px solid transparent;
+  border-radius: 8px;
+}
+
+.header .right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.header .right .links.open {
+  border-right: 1px solid #fb8600;
+}
+
+.header .right .links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header .right .links a {
+  padding: 0px 10px;
+
+  text-decoration: none;
+
+  text-transform: capitalize;
+  font-size: 15px;
+  color: white;
+  transition: 0.5s ease-in-out all;
+
+  text-shadow: 3px 0px 0px black !important;
+
+  font-weight: bold;
+}
+
+.header .right .links a:hover {
+  padding: 5px 10px;
+  border-radius: 5px;
+
+  color: black;
+
+  background-color: #f7bf4f;
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+}
+
+.person_button {
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black;
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+  transition: 0.3s ease;
+  border-radius: 50%;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.person_button::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 15%;
+  height: 25%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.header .right .links a.active {
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black;
+  font-size: 24px;
+  font-family: "Arial", sans-serif;
+  border-radius: 4px;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.header .right .links a.active::after,
+.active::after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 15%;
+  height: 25%;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  transform: rotate(-20deg);
+}
+
+.header .right .links a.active:hover,
+.active:hover {
+  background-color: transparent;
+}
+
+.header .right .logo {
+  position: relative;
+}
+
+.logo .logo_links {
+  position: absolute;
+
+  direction: ltr !important;
+  transition: 0.3s all ease-in-out;
+}
+
+.header .right .logo img {
+  width: 110px;
+  cursor: pointer;
+}
+
+.header .left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .left img {
+  width: 50px;
+  cursor: pointer;
+}
+
+.person_logo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.person_logo .userToggle {
+  position: relative;
+  cursor: pointer;
+}
+
+.person_logo .logo_links {
+  position: absolute;
+
+  background-color: white;
+  padding: 10px;
+  min-width: 300px;
+  top: 55px;
+  left: -11px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.person_logo .logo_links > div:first-of-type {
+  display: flex;
+  align-items: start;
+}
+
+.person_logo .logo_links > div:first-of-type .details h5 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0px;
+  color: black !important;
+}
+
+.person_logo .logo_links > div:first-of-type .details p {
+  color: #343434;
+  margin: 0px;
+}
+
+.logo_links .links > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0px;
+  cursor: pointer;
+
+  border-radius: 0px 0px 4px 4px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 10px;
+  transition: 0.3s all ease-in-out;
+}
+
+.logo_links .links > div span {
+  color: var(--main-color);
+}
+
+.plusIco {
+  color: var(--main-color);
+  background-color: #fb9700;
+  transition: all 0.3s ease-in-out;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 10px;
+  border: 1px solid #fb9700;
+}
+.plusIco:hover {
+  background-color: #3b003b;
+  border: 1px solid #fb9700;
+  color: #fb9700;
+}
+
+.logo_links .links > div:last-of-type {
+  border: none;
+}
+/* 
+.logo_links .links > div {
+  border-bottom: 0.1px solid #3b003b;
+} */
+
+.logo_links .links > div:hover {
+  background-color: #3b003b;
+  color: white !important;
+}
+
+.logo_links .links > div:last-of-type:hover {
+  background-color: transparent;
+}
+
+.logo_links .links > div:last-of-type:hover {
+  background-color: #3b003b;
+  color: white !important;
+}
+
+.logo_links .links > div span {
+}
+
+.logo_links .links > div:hover span {
+  color: white;
+}
+
+.logo_links .links > div img {
+  width: 30px;
+}
+.cart_logo {
+  display: none;
+}
+@media (max-width: 1225px) {
+  #root
+    > div
+    > div.home
+    > div.container.my-5.about_container
+    > div
+    > div.col-md-6.d-flex.justify-content-start
+    > img {
+    max-width: 100% !important;
+  }
+  .cart_logo {
+    display: flex !important;
+  }
+  .banner2 {
+    min-height: fit-content;
+    max-height: fit-content;
+  }
+  .header .right .links {
+    position: fixed;
+    bottom: 0px;
+    z-index: 18;
+    background-color: #3b003b;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    flex-direction: column;
+    left: -140%;
+    max-width: 300px;
+    height: 100%;
+    transition: 0.5s ease-in-out;
+  }
+  .header .right .links.open {
+    left: 0;
+  }
+}
+
+.logo_links .links > div {
+  width: 100% !important;
+}
+
+span.mx-4.plusIco {
+  font-size: 14px !important;
+  margin-right: 2px !important;
+  margin-left: 2px !important;
+}

@@ -1,0 +1,34 @@
+.exams_card_container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 20px 0px;
+}
+
+.exam_card {
+    background-color: #27be9f;;
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    width: 350px;
+    cursor: pointer;
+}
+
+.exam_card  h2 {
+    font-size: 30px !important;
+    margin-top: 10px;
+}
+
+.exam_card div {
+    margin: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    gap:5px
+}
+
+.exam_card div p {
+    padding: 0px;
+    margin: 0px;
+    font-size: 15px;
+}

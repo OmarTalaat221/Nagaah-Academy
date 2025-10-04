@@ -1,0 +1,140 @@
+# Query: Books
+# ContextLines: 1
+
+46 results - 12 files
+
+Extra\Profile\Profile\ProfileUnits\ProfileUnits.js:
+  4  import Lessons from "../../Unit/Lessons/Lessons";
+  5: import Books from "../../Books/Books";
+  6  import CryptoJS from "crypto-js";
+
+src\App.js:
+   10  import Footer from "./components/Footer/Footer";
+   11: import Books from "./pages/Books/Books";
+   12  import Cart from "./pages/Cart/Cart";
+
+  110                <>
+  111:                 <Route path="/book" element={<Books />} />
+  112                  <Route path="/cart" element={<Cart />} />
+
+  151                  <Route path="/login" element={<Login />} />
+  152:                 <Route path="/book" element={<Books />} />
+  153                  <Route path="/CourseContent" element={<CourseContent />} />
+
+src\components\Header\Header.js:
+  81              {/* <NavLink to={"/book"}>
+  82:             books
+  83            </NavLink> */}
+
+src\pages\Books\books.css:
+   1: .books_page {
+   2    /* margin-top: 80px; */
+
+   5  
+   6: .books {
+   7    display: flex;
+
+  19  
+  20: .books_page h4 {
+  21    text-align: center;
+
+  24  
+  25: .books .book {
+  26    /* margin: auto; */
+
+  40  
+  41: .books .book img {
+  42    width: 100px;
+
+  44  
+  45: .books .book h4 {
+  46    font-size: 20px;
+
+  49  
+  50: .books .book:hover {
+  51    background-color: var(--main-color);
+
+  53  
+  54: .books .book:hover h4 {
+  55    color: white;
+
+  58  @media (max-width:767px) {
+  59:   .books_page {
+  60      margin-bottom: 40px;
+
+  62  
+  63:   .books .book {
+  64      width: 48%;
+
+  68  @media (max-width:565px) {
+  69:   .books .book {
+  70      width: 47%;
+
+src\pages\Books\Books.js:
+   1  import React, { useEffect, useState } from 'react'
+   2: import { booksData } from './data';
+   3: import './books.css'
+   4  import Footer from '../../components/Footer/Footer';
+
+   7  import Skeleton from 'react-loading-skeleton';
+   8: const Books = () => {
+   9:   const [books, setBooks] = useState([]);
+  10    const [pageLoading, setPageLoading] = useState(false)
+  11:   const getBooks = () => {
+  12:     setBooks(booksData);
+  13      Axios({
+
+  18          if (res.status == 'success') {
+  19:           // setBooks(res.message);
+  20          } else {
+
+  28    useEffect(() => {
+  29:     getBooks()
+  30    }, [])
+
+  32      <>
+  33:       <div className='books_page'>
+  34:         <h4>Our Books Of This Courses</h4>
+  35:         <div className="books">
+  36            {pageLoading ? (
+
+  40            ) : (
+  41:             books.map((item, index) => {
+  42                return (
+
+  57  
+  58: export default Books
+
+src\pages\Books\data.js:
+  1: export const booksData=[
+  2    {
+
+src\pages\Cart\data.js:
+  6    ],
+  7:   books:[
+  8  
+
+src\pages\CourseDetails\Banner\Banner.js:
+  15          <div className="right">
+  16:           <img src={require("../../../assets/books.png")} alt="" />
+  17          </div>
+
+src\pages\courseVideos\index.js:
+  227                          onClick={() => window.open(params?.get("p"), "_blanck")}
+  228:                       >PDF Books</button>
+  229                        <div className="home-text-box">
+
+src\pages\Home\Banner\Banner.js:
+  17              <button>Profile</button>
+  18:             <button>books</button>
+  19            </div>
+
+src\pages\Profile\ProfileUnits\ProfileUnits.js:
+  4  import Lessons from "../../Unit/Lessons/Lessons";
+  5: import Books from "../../Books/Books";
+  6  import CryptoJS from "crypto-js";
+
+src\pages\Unit\Units.js:
+  7  import Lessons from "./Lessons/Lessons";
+  8: import Books from "../Books/Books";
+  9  import UniteReviews from "./UnitReviews/UniteReviews";

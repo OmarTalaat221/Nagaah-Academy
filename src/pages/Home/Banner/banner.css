@@ -1,0 +1,166 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: calc(100vh - 200px);
+  flex-wrap: wrap;
+  overflow: hidden;
+}
+
+.banner .right,
+.banner .left {
+  width: 48%;
+}
+
+.banner .right img {
+  width: 100%;
+}
+
+.banner .left h4 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.banner .left h5 {
+  font-size: 50px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.banner_container {
+  position: relative !important;
+}
+
+.layer {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(118, 7, 170, 0.425);
+  top: 0;
+  position: absolute;
+  z-index: 999998;
+}
+
+.banner_text {
+  position: absolute;
+  width: 50%;
+  height: 30vh;
+
+  left: 400px;
+  top: 200px;
+  z-index: 999999;
+  text-align: center;
+}
+
+.banner_text h1 {
+  font-size: 60px;
+  color: white;
+  font-weight: bold;
+}
+
+.banner_text p {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  width: 70%;
+  text-align: center;
+  margin: auto;
+}
+
+.banner .left p {
+  font-size: 29px;
+  padding-left: 20px;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.banner .left .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.banner .left .actions button {
+  border: none;
+  padding: 10px;
+  width: 100px;
+  border-radius: 4px;
+  text-transform: capitalize;
+}
+
+.banner .left .actions button:first-of-type {
+  background-color: #30a79d;
+  color: white;
+  transition: 0.3s all ease-in-out;
+}
+
+.banner .left .actions button:first-of-type:hover {
+  color: #30a79d;
+  background-color: white;
+  transition: 0.3s all ease-in-out;
+}
+
+.banner .left .actions button:nth-child(2):hover {
+  background-color: #30a79d;
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .banner .left h5 {
+    font-size: 35px;
+  }
+
+  .banner .left h4 {
+    font-size: 33px;
+  }
+}
+
+@media (max-width: 992px) {
+  .banner .right {
+    order: -1;
+    text-align: center;
+  }
+
+  .banner .right img {
+    width: 500px;
+    margin: auto;
+    max-width: 100%;
+  }
+
+  .banner .left h5 {
+    text-align: center;
+  }
+
+  .banner .left p {
+    text-align: center;
+  }
+
+  .banner .left > div {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px;
+  }
+
+  .banner .right,
+  .banner .left {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .banner .left > div h5 {
+    order: -1 !important;
+  }
+
+  .banner .left h5 {
+    font-size: 30px;
+    font-weight: 800;
+  }
+
+  .banner .left p {
+    font-size: 20px;
+    font-weight: 400;
+  }
+}

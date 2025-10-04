@@ -1,0 +1,11 @@
+.pdf_content::-webkit-scrollbar {
+  width: 10px;
+}
+
+.pdf_content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.pdf_content::-webkit-scrollbar-thumb {
+  background: #888;
+}

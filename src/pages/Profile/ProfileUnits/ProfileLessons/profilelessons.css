@@ -1,0 +1,13 @@
+.profile_lessons_com {
+  margin-top: 30px;
+}
+
+.profile_lessons_com .course_features {
+  width: 500px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.profile_lessons_com .course_features .video {
+  cursor: pointer;
+}

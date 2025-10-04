@@ -1,0 +1,49 @@
+.ProfileInfoContainer {
+}
+
+.ProfileInfoContainer h2 {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding: 25px 25px;
+  font-size: 25px !important;
+}
+
+.info {
+  margin-top: 20px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 30px;
+}
+
+.info div:not(:last-child) {
+  border-bottom: 1px solid #3b003b;
+}
+
+.info .title {
+  font-size: 18px;
+  color: #4a545c;
+  text-transform: capitalize;
+  margin-bottom: 8px;
+}
+
+.info h4 {
+  font-size: 21px;
+  font-weight: 600;
+  padding-bottom: 14px;
+}
+
+@media (max-width: 580px) {
+  .ProfileInfoContainer h2 {
+    font-size: 20px !important;
+  }
+  .info .title {
+    font-size: 16px;
+  }
+
+  .info h4 {
+    font-size: 18px;
+  }
+}

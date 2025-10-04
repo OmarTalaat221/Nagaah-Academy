@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: "Cairo", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background-color: #3b003b !important;
+  background-image: unset !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form-group .ant-upload-list-item-name {
+  color: #ffd700 !important;
+  font-weight: bold !important;
+  font-size: 1.2rem !important;
+  text-align: center !important;
+  text-shadow: 1px 1px 1px #3b003b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+:where(.css-dev-only-do-not-override-240cud).ant-upload-wrapper
+  .ant-upload-list
+  .ant-upload-list-item
+  .ant-upload-list-item-actions
+  .anticon {
+  color: #ffd700 !important;
+}
+:where(.css-dev-only-do-not-override-240cud).ant-table-wrapper
+  td.ant-table-column-sort {
+  background: unset !important;
+}
+
+code {
+  font-family: "Cairo", sans-serif;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+}
+
+:root {
+  --main-color: #3b003b;
+  --second-color: #3b003b;
+}

@@ -1,0 +1,455 @@
+.offer_form_container {
+  width: 100%;
+  min-height: 90vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  direction: rtl;
+  color: white;
+  background-image: url("https://res.cloudinary.com/dnt8gmwab/image/upload/v1746092508/bunner_nagaah_2_wquuho.png") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.form {
+  width: 40%;
+  background: linear-gradient(#3b003b, #3b003b) padding-box,
+    linear-gradient(45deg, #ffd700, #fffb7d, #ffd700) border-box;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+  border: 3px solid transparent;
+  box-shadow: 0 7px 20px 5px rgba(0, 0, 0, 0.404);
+}
+
+.form h1 {
+  font-size: 40px;
+  text-shadow: 4px 0px 0px black;
+}
+
+.form span {
+  width: 100%;
+  margin: auto;
+  display: block;
+  text-align: right;
+
+  padding: 5px 0;
+}
+
+.form span label {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.form span input {
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+
+  background: linear-gradient(#fb970050, #fb970050) padding-box,
+    linear-gradient(45deg, #ffd700, #fffb7d, #ffd700) border-box;
+  border: 0.1px solid transparent;
+  border-radius: 24px;
+}
+
+.form button {
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black !important;
+
+  font-family: "Arial", sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+  padding: 0px 20px;
+  margin: 10px 0px;
+}
+
+#root > div > div.offer_form_container > div > span:nth-child(2) > div:hover {
+  outline: none !important;
+  border: none;
+  box-shadow: none;
+}
+
+.lessons_continer {
+  width: 95%;
+  margin: 20px auto;
+  border-radius: 5px;
+  border: 2px solid #3b003b;
+  min-height: 50vh;
+}
+
+.offers_page {
+  width: 100%;
+  min-height: 90vh;
+  background-image: url("https://res.cloudinary.com/dnt8gmwab/image/upload/v1746092508/bunner_nagaah_2_wquuho.png") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.Loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Loading span {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.need_another_offer {
+  margin: 20px 50px;
+  display: block;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black;
+
+  font-family: "Arial", sans-serif;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.lessons_continer_header {
+  width: 100%;
+  background: linear-gradient(90deg, #79777a, #3b003b);
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-radius: 2px;
+  padding: 10px 0;
+}
+
+.lessons_continer_header button {
+  width: 10%;
+  margin: auto;
+  display: block;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #e0c16a, #fb9700);
+  color: white;
+  transition: 0.5s ease-in-out;
+}
+
+.lessons_continer_header button:hover {
+  background: linear-gradient(90deg, #fb9700, #e0c16a);
+  transition: 0.5s ease-in-out;
+}
+
+.lessons_continer_header input {
+  width: 20%;
+  margin: 0px 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #fb9700;
+}
+
+.select {
+  width: 20%;
+  margin: 0px 15px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #fb9700;
+}
+
+.offers {
+  width: 100%;
+
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.offer_card {
+  width: 250px;
+  background: linear-gradient(#3b003b, #3b003b) padding-box,
+    linear-gradient(45deg, #ffd700, #fffb7d, #ffd700) border-box;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  padding: 10px 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.timer {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.offer_card:hover {
+  box-shadow: 0 15px 25px #0000001a;
+  transform: translateY(-10px);
+}
+
+.offer_card img {
+  height: 100px;
+  margin: auto;
+  display: block;
+}
+
+.acceptBtn {
+  width: 90%;
+  margin: 10px auto;
+  display: block;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black;
+
+  font-family: "Arial", sans-serif;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+.offer_card button:hover {
+  background: linear-gradient(90deg, #fb8600, #fb8600);
+  transition: 0.5s ease-in-out;
+}
+
+.profileBtn {
+  width: 80%;
+  margin: auto;
+  display: block;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black;
+
+  font-family: "Arial", sans-serif;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  font-weight: bold;
+}
+
+/* #react-joyride-step-0 > span {
+  display: none !important;
+} */
+
+.add-offer {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.add-offer button {
+  width: 200px;
+  margin: 20px 0;
+  display: block;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #ffd700, #fffb7d, #ffd700);
+  text-shadow: none !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.39);
+  font-size: larger;
+  border: 2px solid #a97400;
+  color: black;
+
+  font-family: "Arial", sans-serif;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 0 #a97400, 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 1100px) {
+  .form {
+    width: 60%;
+  }
+}
+
+@media (max-width: 610px) {
+  .offer_card {
+    width: 100%;
+  }
+
+  .form {
+    width: 80%;
+  }
+}
+
+/* Main popover container */
+.ant-tour {
+  background: #4b004b !important;
+  /* Purple background */
+  border: 4px solid #ffd700 !important;
+  /* Yellow border */
+  border-radius: 12px !important;
+  /* Rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  /* Subtle shadow */
+  color: #fff !important;
+  /* Default text color */
+  font-family: Arial, sans-serif !important;
+  /* Consistent font */
+  direction: rtl;
+}
+
+/* Inner content */
+.ant-tour-inner {
+  background: transparent !important;
+  padding: 16px !important;
+}
+
+/* Title */
+.ant-tour-header .ant-tour-title {
+  color: #ffd700 !important;
+  /* Yellow title */
+  font-size: 18px !important;
+  font-weight: bold !important;
+  margin: 0 !important;
+}
+
+/* Description */
+.ant-tour-description {
+  color: #fff !important;
+  /* White description text */
+  font-size: 14px !important;
+  margin: 8px 0 !important;
+}
+
+/* Buttons (Previous, Next, Finish) */
+.ant-tour-footer .ant-btn {
+  background: #ffd700 !important;
+  /* Yellow buttons */
+  color: #000 !important;
+  /* Black text on buttons */
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 4px 12px !important;
+  margin-right: 8px !important;
+}
+
+.ant-tour-footer .ant-btn:hover {
+  background: #ffed4e !important;
+  /* Lighter yellow on hover */
+}
+
+/* Close button (X) */
+.ant-tour-close {
+  color: #ffd700 !important;
+  /* Yellow close button */
+  font-size: 16px !important;
+  background: none !important;
+  border: none !important;
+  cursor: pointer !important;
+}
+
+/* Arrow (pointer to the target) */
+.ant-tour-arrow {
+  border-color: #ffd700 !important;
+  /* Yellow arrow */
+}
+
+/* Step indicator (e.g., dots) */
+.ant-tour-dot {
+  background: #ffd700 !important;
+  /* Yellow dots */
+}
+
+.ant-tour-dot-active {
+  background: #ffed4e !important;
+  /* Lighter yellow for active dot */
+}
+
+.ant-picker-input > input {
+  color: white !important;
+}
+
+.ant-picker-input > input::placeholder {
+  color: white !important;
+}
+
+.ant-modal-wrap {
+  z-index: 1200 !important;
+}
+
+.custom-dropdown,
+.custom-dropdown > *,
+.custom-dropdown svg {
+  color: black !important;
+  display: flex;
+  width: 100%;
+  /* padding: 10px; */
+  align-items: flex-start;
+  flex-direction: column;
+}
+.dropdown-option {
+  width: 100%;
+}
+.dropdown-header {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.dropdown-header span {
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+}
+
+@media (max-width: 610px) {
+  .vimeo-player > div {
+    padding: 0 !important;
+  }
+  .showVideo,
+  .showVideo iframe {
+    min-height: initial !important;
+    position: relative !important;
+  }
+}

@@ -1,0 +1,192 @@
+/* .calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: 2px solid #ffd700;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(150px, 1fr));
+  background-color: #3b003b;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  border-bottom: 2px solid #ffd700;
+  color: white;
+}
+
+.time-column {
+  padding: 10px;
+  background-color: #3b003b;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  
+
+
+.time-row {
+  display: grid;
+  grid-template-columns: 100px repeat(auto-fit, minmax(150px, 1fr));
+  border-bottom: 1px solid #ffd700;
+}
+
+.lesson-slot {
+  min-height: 40px;
+  border-left: 1px solid #ffd700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  
+}
+
+.lesson_card {
+  
+  cursor: pointer;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, white, white, white) border-box;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  width: 90%;
+  border: 3px solid transparent;
+}
+
+.lesson_card1 {
+  
+  cursor: unset;
+  background: linear-gradient(white, white) padding-box,
+    linear-gradient(45deg, white, white, white) border-box;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 12px;
+  width: 90%;
+  border: 3px solid transparent;
+}
+
+.lesson_card.confirmed {
+  
+}
+
+.lesson_card.cancelled {
+  
+}
+
+.lesson_card.pending {
+  
+  color: black;
+}
+
+.subject {
+  font-weight: bold;
+  font-size: 25px;
+  
+}
+
+.tutor {
+  font-weight: bold;
+  font-size: 25px;
+  
+  margin: 0px;
+  padding: 0;
+}
+
+.status {
+  font-size: 10px;
+}
+*/
+.myLessons_page {
+  width: 100%;
+  min-height: 90vh;
+  background-image: url("https://res.cloudinary.com/dnt8gmwab/image/upload/v1746092508/bunner_nagaah_2_wquuho.png") !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.myLessons_page {
+  overflow: scroll;
+}
+
+/* ::-webkit-scrollbar {
+  height: 0.5px !important;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+} */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+.live-icon {
+  color: #ffd700 !important;
+  animation: pulse 1s infinite;
+  margin: auto;
+}
+
+.schedule-table {
+  display: grid;
+  grid-template-columns: 100px repeat(7, 1fr);
+  color: #ffd700;
+  min-width: 1000px;
+}
+
+.schedule-header,
+.schedule-row {
+  display: contents;
+}
+
+.day-column-header,
+.day-column {
+  padding: 8px;
+  font-weight: bold;
+  border: 1px solid black;
+  text-align: center;
+  color: white;
+  background-color: black;
+}
+
+.hour-column-header {
+  background-color: black !important;
+}
+
+.hour-column-header,
+.lesson-slot {
+  padding: 8px;
+  border: 1px solid black;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  background-color: white;
+}
+
+.empty-slot {
+  color: #ffd700;
+  font-size: 12px;
+}

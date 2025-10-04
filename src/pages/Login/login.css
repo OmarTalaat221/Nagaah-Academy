@@ -1,0 +1,139 @@
+.login_page {
+  padding: 20px;
+}
+
+.login_page form {
+  width: 500px;
+  max-width: 100%;
+  background-color: white;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+
+  direction: rtl;
+}
+
+.login_page form .welcome div {
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.login_page form .welcome span {
+  font-size: 15px;
+}
+
+.login_page form .formTitle {
+  text-align: start;
+  margin: 10px 0px 30px;
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+}
+
+.login_page form .formTitle::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  width: 65px;
+  background: blue;
+}
+.login_page h5 {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.login_page form .pass_div {
+  position: relative;
+}
+
+.login_page form .pass_div svg {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.login_page form label {
+  margin: 15px 0px 3px;
+  padding: 0px 5px;
+  font-size: medium;
+  color: #93999e;
+}
+
+.login_page form input::placeholder {
+  color: rgb(172, 171, 171);
+}
+
+.login_page form .pass_div input {
+  width: 100%;
+  padding: 10px;
+}
+
+.login_page h5 span:nth-child(2) {
+  color: #1255f0;
+  cursor: pointer;
+  font-size: large;
+}
+
+.login_page button {
+  /* background-color: #30a79d;
+  color: white;
+  width: 100px;
+  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+  border: none;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer; */
+  box-shadow: 0px 5px 10px 0px rgb(59 0 59);
+  background-color: #3b003b;
+  color: white;
+  border: 0.1px solid transparent;
+}
+
+.login_page button:hover {
+  box-shadow: 0px 5px 10px 0px #ba8ae9;
+  background-color: white;
+  color: #3b003b;
+  border: 0.1px solid #3b003b;
+}
+
+@media (max-width: 1300px) {
+  .login_page {
+    background-position-y: -300px !important;
+  }
+}
+
+@media (max-width: 1200px) {
+  .login_page {
+    background-position-y: -100px !important;
+  }
+}
+
+@media (max-width: 992px) {
+  .login_page {
+    background-position-y: -200px;
+  }
+}
+
+@media (max-width: 767px) {
+  .login_page {
+    background-position-y: -30px !important;
+  }
+}
+
+@media (max-width: 565px) {
+  .login_page {
+    padding: 10px;
+  }
+}

@@ -1,0 +1,96 @@
+.allcourses_banner_comp {
+  min-height: 80vh;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: relative;
+  /* background-image: linear-gradient(#00000094, #0000004f),
+    url(./public/medLearningHub.png); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.allcourses_banner_comp .page_name {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--main-color);
+  color: white;
+  text-align: center;
+}
+
+.allcourses_banner_comp .page_name h4 {
+  font-size: 65px;
+  font-weight: 700;
+}
+
+.allcourses_banner_comp .page_name p {
+  width: fit-content;
+  display: flex;
+  gap: 8px;
+  margin: 15px auto;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.allcourses_banner_comp .page_name p a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s;
+}
+
+.allcourses_banner_comp .page_name p svg {
+  width: 25px;
+  height: 25px;
+  color: white;
+  margin: auto 0;
+  font-weight: 800;
+}
+
+.allcourses_banner_comp .page_name p a:hover {
+  color: #27be9f;
+}
+
+@media (max-width: 822px) {
+  .allcourses_banner_comp .page_name h4 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 633px) {
+  .allcourses_banner_comp .page_name h4 {
+    font-size: 40px;
+  }
+
+  .allcourses_banner_comp .page_name p {
+    font-size: 18px;
+  }
+
+  .allcourses_banner_comp .page_name p svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+@media (max-width: 507px) {
+  .allcourses_banner_comp .page_name h4 {
+    font-size: 35px;
+  }
+
+  .allcourses_banner_comp .page_name p {
+    font-size: 16px;
+    gap: 5px;
+  }
+
+  .allcourses_banner_comp .page_name p svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 444px) {
+  .allcourses_banner_comp .page_name {
+    width: 100%;
+  }
+}

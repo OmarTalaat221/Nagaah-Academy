@@ -1,0 +1,22 @@
+.container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  width: 100%;
+  gap: 20px;
+}
+
+.video {
+  background-color: #3e4143;
+  margin-right: 40px;
+
+  /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.nagah_player div iframe {
+  height: 100% !important;
+}
+
+.omar > div {
+  height: 100% !important;
+}

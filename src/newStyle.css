@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+
+.container2 {
+  max-width: 1250px !important;
+  margin: auto;
+}
+
+.columnDiv p {
+  color: grey;
+}
+
+.columnDiv {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 39px auto 0;
+}
+
+.card .main h2 {
+  padding: 10px 0;
+  margin-top: 0 !important;
+  border-bottom: 0.1px solid #80808069;
+}
+
+.logoDrImage {
+  width: 50px;
+}
+
+button.btn.fourth:hover {
+  color: white;
+}
+
+button.btn.fourth:hover::after {
+  height: 100%;
+}
+
+button.btn.fourth::after {
+  content: "";
+  background: var(--main-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  border-radius: 4px;
+  height: 0;
+  transition: 0.2s ease-in-out;
+}
+
+button.btn.fourth {
+  position: relative;
+  width: 190px;
+  margin: 59px auto 10px;
+  padding: 10px;
+  border: 0.1px solid transparent;
+  border-radius: 4px;
+  box-shadow: 0 7px 20px 5px rgb(217 217 217 / 53%);
+}
+
+.divAlignCenter {
+  align-items: center !important;
+}
+
+.footerImage {
+  object-fit: cover;
+}
+
+/* .courses_content.py-3 {
+  padding: 0 0 150px 0 !important;
+} */
+
+.accordion-item {
+  margin-bottom: -1px;
+  background-color: #fff !important;
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
+}
+
+.content_div h4,
+.videos .video {
+  margin: 0 !important;
+  background-color: transparent !important;
+  padding: 1rem calc(3rem) 1rem 1.25rem !important;
+  font-size: 1rem !important;
+  color: white;
+  cursor: pointer;
+}
+
+.h5,
+h5 {
+  font-size: 1rem !important;
+  color: white !important;
+}
+
+.accordion-item:first-of-type h4 {
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.rowDiv {
+  display: flex;
+  gap: 8px;
+}
+
+.videos .video img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.videos .video .left span {
+  background: var(--main-color);
+  color: white;
+  font-weight: 600;
+  font-family: "Tajawal", sans-serif;
+}
+.videos .video {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125) !important;
+  width: 90%;
+  margin: auto;
+  border-radius: 0 !important;
+}
+
+.videos.show {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
