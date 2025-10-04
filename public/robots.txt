@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nagaah-academy.vercel.app/sitemap.xml

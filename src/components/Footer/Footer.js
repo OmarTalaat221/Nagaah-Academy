@@ -8,6 +8,7 @@ import {
   FaSnapchatGhost,
 } from "react-icons/fa";
 import logo from "../../assets/logo/log.png";
+import { FaWhatsapp } from "react-icons/fa6";
 
 const Footer = () => {
   const userData = JSON.parse(localStorage.getItem("NagahUser"));
@@ -23,9 +24,9 @@ const Footer = () => {
       label: "Instagram",
     },
     {
-      icon: FaTiktok,
+      icon: FaWhatsapp,
       url: "https://www.instagram.com/manastngaah/", // You might want to update this to actual TikTok URL
-      label: "TikTok",
+      label: "Whatsapp",
     },
     {
       icon: FaSnapchatGhost,
