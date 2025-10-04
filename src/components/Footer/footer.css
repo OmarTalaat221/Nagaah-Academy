@@ -306,3 +306,23 @@ a {
   .copyright-area {
   }
 }
+
+/* Custom styles for social buttons */
+.social-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Instagram gradient hover effect */
+.social-btn:hover.instagram-btn {
+  background: linear-gradient(45deg, #833ab4, #fd1d1d, #f77737);
+}
+
+/* Alternative smooth transition for all social buttons */
+.social-btn {
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+}

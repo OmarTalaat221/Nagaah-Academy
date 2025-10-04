@@ -12,30 +12,62 @@ import { FaWhatsapp } from "react-icons/fa6";
 
 const Footer = () => {
   const userData = JSON.parse(localStorage.getItem("NagahUser"));
+
   const socialLinks = [
     {
       icon: FaFacebookF,
       url: "https://www.facebook.com/profile.php?id=61555961158291",
       label: "Facebook",
+      color: "hover:bg-[#1877F2] hover:text-white",
+      bgHover: "#1877F2",
     },
     {
       icon: FaInstagram,
       url: "https://www.instagram.com/manastngaah/",
       label: "Instagram",
+      color:
+        "hover:bg-gradient-to-r hover:from-[#833AB4] hover:via-[#FD1D1D] hover:to-[#F77737] hover:text-white",
+      bgHover: "#E4405F",
     },
     {
       icon: FaWhatsapp,
-      url: "https://www.instagram.com/manastngaah/", // You might want to update this to actual TikTok URL
-      label: "Whatsapp",
+      url: "https://wa.me/1234567890", // Replace with your actual WhatsApp number
+      label: "WhatsApp",
+      color: "hover:bg-[#25D366] hover:text-white",
+      bgHover: "#25D366",
     },
     {
       icon: FaSnapchatGhost,
-      url: "https://www.instagram.com/medicotoon?igsh=dnR3OGgwemFhZHp4",
+      url: "https://www.snapchat.com/add/yourusername", // Replace with actual Snapchat username
       label: "Snapchat",
+      color: "hover:bg-[#FFFC00] hover:text-black",
+      bgHover: "#FFFC00",
     },
   ];
+
+  // Alternative: If you want to use TikTok instead of Snapchat
+  // {
+  //   icon: FaTiktok,
+  //   url: "https://www.tiktok.com/@yourusername",
+  //   label: "TikTok",
+  //   color: "hover:bg-[#000000] hover:text-white",
+  //   bgHover: "#000000"
+  // }
+
+  const handleSocialClick = (social) => {
+    if (social.label === "WhatsApp") {
+      const phoneNumber = "96566654045";
+
+      const whatsappUrl = `https://wa.me/${phoneNumber}`;
+
+      window.open(whatsappUrl, "_blank");
+    } else {
+      window.open(social.url, "_blank");
+    }
+  };
+
   return (
-    <footer className="footer-section ">
+    <footer className="footer-section">
       <div className="container mx-auto px-4">
         <div className="footer-content py-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-6">
@@ -49,7 +81,7 @@ const Footer = () => {
                     src={logo}
                     alt="logo"
                   />
-                  <p className="mt-4 ">
+                  <p className="mt-4">
                     ابقَ على اتصال معنا واستمتع بعروض حصرية مستمرة مصممة خصيصًا
                     لمتابعينا.
                   </p>
@@ -62,9 +94,12 @@ const Footer = () => {
                       return (
                         <button
                           key={index}
-                          onClick={() => window.open(social.url, "_blank")}
-                          className="w-10 h-10 flex items-center justify-center text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 hover:text-gray-800 transition-all duration-300 hover:scale-110"
+                          onClick={() => handleSocialClick(social)}
+                          className={`social-btn w-10 h-10 flex items-center justify-center text-gray-600 bg-gray-100 rounded-full transition-all duration-300 hover:scale-110 ${social.color}`}
                           aria-label={social.label}
+                          style={{
+                            "--hover-color": social.bgHover,
+                          }}
                         >
                           <Icon className="text-lg" />
                         </button>
@@ -82,14 +117,14 @@ const Footer = () => {
               </div>
               <ul className="space-y-2">
                 <li>
-                  <Link to={"/"} className=" transition-colors">
+                  <Link to={"/"} className="transition-colors">
                     الرئيسية
                   </Link>
                 </li>
                 <li>
                   <Link
                     to={userData ? "/mycourses" : "/courses"}
-                    className=" transition-colors"
+                    className="transition-colors"
                   >
                     المناهج
                   </Link>
@@ -104,7 +139,7 @@ const Footer = () => {
               </div>
               <ul className="space-y-2">
                 <li>
-                  <Link to="/exams" className=" transition-colors">
+                  <Link to="/exams" className="transition-colors">
                     الاختبارات
                   </Link>
                 </li>
@@ -118,7 +153,7 @@ const Footer = () => {
                   <h3 className="text-lg font-bold mb-4">اشترك الآن</h3>
                 </div>
                 <div className="footer-text">
-                  <p className="mb-4 ">
+                  <p className="mb-4">
                     لا تفوت فرصة الاشتراك في أحدث التحديثات والعروض، قم بملء
                     النموذج أدناه.
                   </p>
@@ -150,9 +185,9 @@ const Footer = () => {
             <div className="copyright-text">
               <p>
                 جميع الحقوق محفوظة &copy; 2025{" "}
-                <div className="text-[#ffd700] hover:text-[#fb9700] transition-colors">
+                <span className="text-[#ffd700] hover:text-[#fb9700] transition-colors">
                   Nagaah
-                </div>
+                </span>
               </p>
             </div>
           </div>
