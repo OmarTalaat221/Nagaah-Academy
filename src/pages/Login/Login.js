@@ -54,7 +54,7 @@ const Login = () => {
       if (isIOS) {
         // iOS Safari doesn't support Web Push Notifications
         console.log("iOS device detected - skipping notification setup");
-        toast.info("الإشعارات غير متاحة على أجهزة iOS في الوقت الحالي");
+        // toast.info("الإشعارات غير متاحة على أجهزة iOS في الوقت الحالي");
       } else {
         // For non-iOS devices, request notification permission
         console.log("Requesting notification permission...");
@@ -252,9 +252,9 @@ const Login = () => {
               clipRule="evenodd"
             />
           </svg>
-          {isIOS
+          {/* {isIOS
             ? "الإشعارات غير متاحة على أجهزة iOS"
-            : "يجب السماح بالإشعارات لتسجيل الدخول"}
+            : "يجب السماح بالإشعارات لتسجيل الدخول"} */}
         </div>
       </motion.div>
 
