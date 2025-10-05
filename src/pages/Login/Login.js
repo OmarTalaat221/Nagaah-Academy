@@ -1,7 +1,6 @@
 import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { base_url } from "../../constants";
-import bcrypt from "bcryptjs";
 import CryptoJS from "crypto-js";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -16,23 +15,24 @@ const Login = () => {
 
   const [loginLoading, setLoginLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  const [isEdge, setIsEdge] = useState(false);
-  const [showEdgeInstructions, setShowEdgeInstructions] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
   const [loginData, setLoginData] = useState({
     email: "",
     pass: "",
   });
 
   useEffect(() => {
-    // Detect if user is using Microsoft Edge
-    const detectEdge = () => {
+    // Detect if user is using iOS device
+    const detectIOS = () => {
       const userAgent = navigator.userAgent;
-      const isEdgeBrowser = /Edge|Edg/.test(userAgent);
-      setIsEdge(isEdgeBrowser);
-      console.log("Is Edge browser:", isEdgeBrowser);
+      const isIOSDevice =
+        /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+      setIsIOS(isIOSDevice);
+      console.log("Is iOS device:", isIOSDevice);
+      console.log("User Agent:", userAgent);
     };
 
-    detectEdge();
+    detectIOS();
   }, []);
 
   const handleSub = async () => {
@@ -48,36 +48,44 @@ const Login = () => {
     setLoginLoading(true);
 
     try {
-      // STEP 1: First request notification permission - REQUIRED for login
-      console.log("Requesting notification permission...");
+      let fcmToken = null;
 
-      const hasPermission = await requestNotificationPermission();
+      // Check if iOS device
+      if (isIOS) {
+        // iOS Safari doesn't support Web Push Notifications
+        console.log("iOS device detected - skipping notification setup");
+        toast.info("الإشعارات غير متاحة على أجهزة iOS في الوقت الحالي");
+      } else {
+        // For non-iOS devices, request notification permission
+        console.log("Requesting notification permission...");
 
-      // if (!hasPermission) {
-      //   // If permission denied, don't proceed with login
-      //   if (isEdge) {
-      //     setShowEdgeInstructions(true);
-      //     toast.error("يجب تفعيل الإشعارات من إعدادات Edge لتسجيل الدخول");
-      //   } else {
-      //     toast.error("يجب السماح بالإشعارات لتسجيل الدخول");
-      //   }
-      //   setLoginLoading(false);
-      //   return;
-      // }
+        const hasPermission = await requestNotificationPermission();
 
-      const fcmToken = await fcmService.getFCMToken();
+        if (!hasPermission) {
+          toast.error("يجب السماح بالإشعارات لتسجيل الدخول");
+          setLoginLoading(false);
+          return;
+        }
 
-      if (!fcmToken) {
-        toast.error("فشل في الحصول على رمز الإشعارات. يرجى المحاولة مرة أخرى");
-        setLoginLoading(false);
-        return;
+        // Get FCM token
+        fcmToken = await fcmService.getFCMToken();
+
+        if (!fcmToken) {
+          toast.error(
+            "فشل في الحصول على رمز الإشعارات. يرجى المحاولة مرة أخرى"
+          );
+          setLoginLoading(false);
+          return;
+        }
+
+        console.log("FCM Token obtained:", fcmToken);
       }
 
-      // STEP 3: Proceed with login only if we have both permission and token
+      // Proceed with login
       const data_send = {
         ...loginData,
-        fcm_token: fcmToken,
-        device_type: "web",
+        fcm_token: fcmToken || "ios_not_supported",
+        device_type: isIOS ? "ios" : "web",
         user_agent: navigator.userAgent,
       };
 
@@ -104,25 +112,27 @@ const Login = () => {
         ).toString();
         localStorage.setItem("elmataryapp", encryptedData);
 
-        // Store FCM token locally
-        localStorage.setItem("fcmToken", fcmToken);
+        // Store FCM token locally (if available)
+        if (fcmToken) {
+          localStorage.setItem("fcmToken", fcmToken);
 
-        // Setup message listener
-        fcmService.setupForegroundMessageListener();
+          // Setup message listener
+          fcmService.setupForegroundMessageListener();
+
+          // Show welcome notification
+          setTimeout(() => {
+            if (Notification.permission === "granted") {
+              new Notification("مرحباً بك!", {
+                body: "تم تسجيل الدخول بنجاح",
+                icon: "/favicon.ico",
+                tag: "login-success",
+              });
+            }
+          }, 1000);
+        }
 
         // Show success message
         toast.success("تم تسجيل الدخول بنجاح");
-
-        // Show welcome notification
-        setTimeout(() => {
-          if (Notification.permission === "granted") {
-            new Notification("مرحباً بك!", {
-              body: "تم تسجيل الدخول بنجاح",
-              icon: "/favicon.ico",
-              tag: "login-success",
-            });
-          }
-        }, 1000);
 
         // Navigate to appropriate page after a short delay
         setTimeout(() => {
@@ -141,7 +151,7 @@ const Login = () => {
     }
   };
 
-  // Function to request notification permission with Edge handling
+  // Function to request notification permission
   const requestNotificationPermission = async () => {
     try {
       // Check if browser supports notifications
@@ -159,7 +169,6 @@ const Login = () => {
       // If denied, show error
       if (Notification.permission === "denied") {
         toast.error("الإشعارات محظورة. يرجى تفعيلها من إعدادات المتصفح");
-
         return false;
       }
 
@@ -172,7 +181,7 @@ const Login = () => {
         // Handle different browser implementations
         if (typeof Notification.requestPermission === "function") {
           if (Notification.requestPermission.length) {
-            // Legacy callback-based (for Edge compatibility)
+            // Legacy callback-based
             permission = await new Promise((resolve) => {
               Notification.requestPermission(resolve);
             });
@@ -186,14 +195,7 @@ const Login = () => {
         }
       } catch (requestError) {
         console.error("Permission request error:", requestError);
-
-        // Edge might block the request, show instructions
-        if (isEdge) {
-          setShowEdgeInstructions(true);
-          toast.error("Edge حظر طلب الإشعارات. اتبع التعليمات للتفعيل اليدوي");
-        } else {
-          toast.error("فشل في طلب إذن الإشعارات");
-        }
+        toast.error("فشل في طلب إذن الإشعارات");
         return false;
       }
 
@@ -201,17 +203,11 @@ const Login = () => {
 
       if (permission === "granted") {
         console.log("Notification permission granted!");
-        setShowEdgeInstructions(false);
         return true;
       } else if (permission === "denied") {
-        if (isEdge) {
-          setShowEdgeInstructions(true);
-          toast.error("تم رفض إذن الإشعارات في Edge. اتبع التعليمات لتفعيلها");
-        } else {
-          toast.error(
-            "تم رفض إذن الإشعارات. لا يمكن تسجيل الدخول بدون الإشعارات"
-          );
-        }
+        toast.error(
+          "تم رفض إذن الإشعارات. لا يمكن تسجيل الدخول بدون الإشعارات"
+        );
         return false;
       } else {
         toast.error("يجب الموافقة على الإشعارات لتسجيل الدخول");
@@ -219,12 +215,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Error requesting notification permission:", error);
-      if (isEdge) {
-        setShowEdgeInstructions(true);
-        toast.error("فشل في طلب إذن الإشعارات في Edge");
-      } else {
-        toast.error("فشل في طلب إذن الإشعارات");
-      }
+      toast.error("فشل في طلب إذن الإشعارات");
       return false;
     }
   };
@@ -236,7 +227,7 @@ const Login = () => {
         background: `linear-gradient(135deg, #3b003b 0%, #5a0a5a 50%, #3b003b 100%)`,
       }}
     >
-      {/* Notification requirement notice - updated for Edge */}
+      {/* Notification requirement notice - Updated for iOS */}
       <motion.div
         className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20"
         initial={{ opacity: 0, y: -20 }}
@@ -245,10 +236,10 @@ const Login = () => {
       >
         <div
           className={`${
-            isEdge
+            isIOS
               ? "bg-blue-100 border-blue-400 text-blue-800"
               : "bg-yellow-100 border-yellow-400 text-yellow-800"
-          } px-4 py-2 rounded-lg text-sm text-center shadow-lg`}
+          } px-4 py-2 rounded-lg text-sm text-center shadow-lg border`}
         >
           <svg
             className="w-4 h-4 inline-block ml-1"
@@ -257,11 +248,13 @@ const Login = () => {
           >
             <path
               fillRule="evenodd"
-              d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
               clipRule="evenodd"
             />
           </svg>
-          {"يجب السماح بالإشعارات لتسجيل الدخول"}
+          {isIOS
+            ? "الإشعارات غير متاحة على أجهزة iOS"
+            : "يجب السماح بالإشعارات لتسجيل الدخول"}
         </div>
       </motion.div>
 
@@ -605,7 +598,11 @@ const Login = () => {
                       animate={{ opacity: 1 }}
                     >
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin ml-2"></div>
-                      <span>جاري التحقق من الإشعارات...</span>
+                      <span>
+                        {isIOS
+                          ? "جاري تسجيل الدخول..."
+                          : "جاري التحقق من الإشعارات..."}
+                      </span>
                     </motion.div>
                   ) : (
                     <motion.div
