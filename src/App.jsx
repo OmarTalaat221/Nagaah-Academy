@@ -1,5 +1,5 @@
 import "./App.css";
-import { Route, Routes, useLocation } from "react-router";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
 import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import Login from "./pages/Login/Login";
@@ -65,6 +65,9 @@ import fcmService from "./fcm-service";
 import useDiamondReward from "./hooks/useDiamondReward";
 import DiamondRewardModal from "./components/DiamondReward/DiamondRewardModal";
 import TreasureRewardModal from "./components/DiamondReward/TreasureRewardModal";
+
+// Security Alert import
+import SecurityAlert from "./components/SecurityAlert/SecurityAlert";
 
 // elmataryapp localStorage (encrypted)
 const localData = localStorage.getItem("elmataryapp");
@@ -140,14 +143,20 @@ export const handleLogOut = async () => {
 
 function App() {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   // Diamond Reward System Hook (uses NagahUser with plain JSON)
   const {
     showDiamondModal,
     showTreasureModal,
+    showSecurityAlert,
+    securityAlertVisible,
     newDiamondsEarned,
     setShowDiamondModal,
     setShowTreasureModal,
+    setShowSecurityAlert,
+    hideSecurityAlertVisual,
+    completeSecurityAlert,
     currentDiamonds,
   } = useDiamondReward();
 
@@ -156,10 +165,24 @@ function App() {
 
   const location = useLocation();
 
+  // Security logout function for FCM token mismatch
+  const handleSecurityLogout = () => {
+    console.log(
+      "Security logout triggered - FCM token mismatch - 60 seconds elapsed"
+    );
+
+    // Complete the security alert process
+    completeSecurityAlert();
+
+    // Clear all localStorage
+    localStorage.clear();
+
+    window.location.href = "/login";
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Setup FCM if user is logged in (check both userData sources)
     if (
       (userData && Object.keys(userData).length > 0) ||
       (nagahUserData && Object.keys(nagahUserData).length > 0)
@@ -232,6 +255,14 @@ function App() {
             <>
               <NotificationDisplay />
               <NotificationPopup />
+
+              {/* Security Alert for FCM token mismatch */}
+              <SecurityAlert
+                show={showSecurityAlert}
+                visible={securityAlertVisible}
+                onTimeout={handleSecurityLogout}
+                onClose={hideSecurityAlertVisual}
+              />
 
               {/* Diamond Reward System Modals - Only for NagahUser */}
               {nagahUserData && Object.keys(nagahUserData).length > 0 && (

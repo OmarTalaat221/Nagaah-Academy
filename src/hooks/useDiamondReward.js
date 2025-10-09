@@ -5,6 +5,8 @@ import { base_url } from "../constants";
 const useDiamondReward = () => {
   const [showDiamondModal, setShowDiamondModal] = useState(false);
   const [showTreasureModal, setShowTreasureModal] = useState(false);
+  const [showSecurityAlert, setShowSecurityAlert] = useState(false);
+  const [securityAlertVisible, setSecurityAlertVisible] = useState(false);
   const [previousDiamonds, setPreviousDiamonds] = useState(0);
   const [newDiamondsEarned, setNewDiamondsEarned] = useState(0);
 
@@ -32,15 +34,25 @@ const useDiamondReward = () => {
     }
   }, []);
 
-  // Check for diamond updates from server
+  // Get current FCM token
+  const getCurrentFCMToken = useCallback(() => {
+    return localStorage.getItem("fcmToken");
+  }, []);
+
+  // Check for diamond updates and FCM token changes from server
   const checkDiamondUpdates = useCallback(async () => {
     const userData = getUserData();
     if (!userData || !userData.student_id) return;
 
     try {
+      const currentFCMToken = getCurrentFCMToken();
+
       const response = await axios.post(
         `${base_url}/user/auth/user_info.php`,
-        JSON.stringify({ student_id: userData.student_id }),
+        JSON.stringify({
+          student_id: userData.student_id,
+          fcm_token: currentFCMToken, // Send current FCM token to compare
+        }),
         {
           headers: {
             "Content-Type": "application/json",
@@ -52,6 +64,25 @@ const useDiamondReward = () => {
         const serverUserData = response.data.message;
         const currentDiamonds = parseInt(serverUserData.diamond) || 0;
         const localDiamonds = parseInt(userData.diamond) || 0;
+
+        // Check FCM token mismatch (security check)
+        const serverFCMToken = serverUserData.fcm_token;
+        if (
+          serverFCMToken &&
+          currentFCMToken &&
+          serverFCMToken !== currentFCMToken
+        ) {
+          console.log(
+            "FCM Token mismatch detected - user logged in from another device"
+          );
+          console.log("Local FCM:", currentFCMToken);
+          console.log("Server FCM:", serverFCMToken);
+
+          // Trigger security alert and timer
+          setShowSecurityAlert(true);
+          setSecurityAlertVisible(true);
+          return; // Don't process diamond updates if security issue detected
+        }
 
         console.log("Diamond check for NagahUser:", {
           currentDiamonds,
@@ -90,7 +121,7 @@ const useDiamondReward = () => {
     } catch (error) {
       console.error("Error checking diamond updates:", error);
     }
-  }, [getUserData, updateUserData]);
+  }, [getUserData, updateUserData, getCurrentFCMToken]);
 
   // Initialize and start periodic checking
   useEffect(() => {
@@ -101,18 +132,34 @@ const useDiamondReward = () => {
       // Initial check
       checkDiamondUpdates();
 
-      const interval = setInterval(checkDiamondUpdates, 300000);
+      const interval = setInterval(checkDiamondUpdates, 300000); // 5 minutes
 
       return () => clearInterval(interval);
     }
   }, [checkDiamondUpdates, getUserData]);
 
+  // Hide security alert visually (but keep timer running)
+  const hideSecurityAlertVisual = useCallback(() => {
+    setSecurityAlertVisible(false);
+  }, []);
+
+  // Complete security alert cleanup (called when timer ends)
+  const completeSecurityAlert = useCallback(() => {
+    setShowSecurityAlert(false);
+    setSecurityAlertVisible(false);
+  }, []);
+
   return {
     showDiamondModal,
     showTreasureModal,
+    showSecurityAlert,
+    securityAlertVisible,
     newDiamondsEarned,
     setShowDiamondModal,
     setShowTreasureModal,
+    setShowSecurityAlert,
+    hideSecurityAlertVisual,
+    completeSecurityAlert,
     currentDiamonds: previousDiamonds,
   };
 };
