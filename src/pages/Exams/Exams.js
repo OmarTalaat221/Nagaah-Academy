@@ -5,7 +5,14 @@ import { base_url } from "../../constants";
 import CryptoJS from "crypto-js";
 import axios from "axios";
 import { MdQuiz, MdTimer, MdCalendarToday, MdPlayArrow } from "react-icons/md";
-import { FaCheckCircle, FaTimesCircle, FaClock, FaEye } from "react-icons/fa";
+import {
+  FaCheckCircle,
+  FaTimesCircle,
+  FaClock,
+  FaEye,
+  FaExternalLinkAlt,
+  FaLink,
+} from "react-icons/fa";
 import ContentLoader from "react-content-loader";
 
 export default function Exams() {
@@ -107,6 +114,18 @@ export default function Exams() {
 
     if (!examStatus.clickable) return;
 
+    // Handle link type exams
+    if (exam.type === "link" || exam.type === "external") {
+      if (exam.exam_link) {
+        // Open external link in new tab
+        window.open(exam.exam_link, "_blank", "noopener,noreferrer");
+      } else {
+        console.error("No exam link provided for link type exam");
+      }
+      return;
+    }
+
+    // Handle normal type exams
     if (examStatus.status === "active") {
       const examParams = new URLSearchParams({
         exam_time: exam.exam_time || exam.timer,
@@ -123,6 +142,18 @@ export default function Exams() {
 
       navigate(`/exam/take/${exam.exam_id}?${solvedParams.toString()}`);
     }
+  };
+
+  const getExamTypeInfo = (exam) => {
+    const isLinkType = exam.type === "link" || exam.type === "external";
+
+    return {
+      isLink: isLinkType,
+      icon: isLinkType ? FaLink : MdQuiz,
+      bgColor: isLinkType ? "rgba(255, 152, 0, 0.2)" : "rgba(255, 215, 0, 0.2)",
+      iconColor: isLinkType ? "#ff9800" : "#ffd700",
+      borderColor: isLinkType ? "#ff9800" : "#ffd700",
+    };
   };
 
   return (
@@ -187,7 +218,9 @@ export default function Exams() {
             >
               {exams.map((exam, index) => {
                 const examStatus = getExamStatus(exam);
+                const typeInfo = getExamTypeInfo(exam);
                 const IconComponent = examStatus.icon;
+                const ExamTypeIcon = typeInfo.icon;
 
                 return (
                   <div
@@ -238,6 +271,24 @@ export default function Exams() {
                         {examStatus.text}
                       </div>
 
+                      {/* Exam Type Badge */}
+                      <div
+                        className="absolute top-4 left-4 px-3 py-1 rounded-full text-white font-bold text-xs shadow-lg z-20 flex items-center gap-1"
+                        style={{
+                          backgroundColor: typeInfo.isLink
+                            ? "#ff9800"
+                            : "#5352ed",
+                          opacity: 0.9,
+                        }}
+                      >
+                        {typeInfo.isLink ? (
+                          <FaExternalLinkAlt size={12} />
+                        ) : (
+                          <MdQuiz size={12} />
+                        )}
+                        {typeInfo.isLink ? "رابط خارجي" : "إمتحان تفاعلي"}
+                      </div>
+
                       {/* Content container */}
                       <div className="relative z-10 flex flex-col p-8 h-full">
                         {/* Exam Icon */}
@@ -246,22 +297,14 @@ export default function Exams() {
                             <div
                               className="w-24 h-24 rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110 group-hover:rotate-12"
                               style={{
-                                backgroundColor:
-                                  exam.solved === "yes"
-                                    ? "rgba(46, 213, 115, 0.2)"
-                                    : "rgba(255, 215, 0, 0.2)",
-                                border: `3px solid ${
-                                  exam.solved === "yes" ? "#2ed573" : "#ffd700"
-                                }`,
+                                backgroundColor: typeInfo.bgColor,
+                                border: `3px solid ${typeInfo.borderColor}`,
                               }}
                             >
-                              <MdQuiz
+                              <ExamTypeIcon
                                 size={40}
                                 style={{
-                                  color:
-                                    exam.solved === "yes"
-                                      ? "#2ed573"
-                                      : "#ffd700",
+                                  color: typeInfo.iconColor,
                                 }}
                               />
                             </div>
@@ -298,16 +341,37 @@ export default function Exams() {
 
                           {/* Exam Details */}
                           <div className="space-y-3 mt-6">
-                            {/* Duration */}
-                            <div className="flex items-center justify-center gap-3">
-                              <MdTimer style={{ color: "#ffd700" }} size={20} />
-                              <span
-                                style={{ color: "#fff" }}
-                                className="font-medium"
-                              >
-                                {exam.exam_time || exam.timer} دقيقة
-                              </span>
-                            </div>
+                            {/* Duration - Only show for normal exams */}
+                            {!typeInfo.isLink && (
+                              <div className="flex items-center justify-center gap-3">
+                                <MdTimer
+                                  style={{ color: "#ffd700" }}
+                                  size={20}
+                                />
+                                <span
+                                  style={{ color: "#fff" }}
+                                  className="font-medium"
+                                >
+                                  {exam.exam_time || exam.timer} دقيقة
+                                </span>
+                              </div>
+                            )}
+
+                            {/* External Link indicator for link exams */}
+                            {typeInfo.isLink && (
+                              <div className="flex items-center justify-center gap-3">
+                                <FaExternalLinkAlt
+                                  style={{ color: "#ff9800" }}
+                                  size={18}
+                                />
+                                <span
+                                  style={{ color: "#fff" }}
+                                  className="font-medium text-sm"
+                                >
+                                  سيتم فتح الإمتحان في نافذة جديدة
+                                </span>
+                              </div>
+                            )}
 
                             {/* Start Date */}
                             <div className="flex items-center justify-center gap-3">
@@ -334,8 +398,8 @@ export default function Exams() {
                               </span>
                             </div>
 
-                            {/* Questions Count */}
-                            {exam.questions_count && (
+                            {/* Questions Count - Only for normal exams */}
+                            {!typeInfo.isLink && exam.questions_count && (
                               <div className="flex items-center justify-center gap-3">
                                 <MdQuiz
                                   style={{ color: "#ffd700" }}
@@ -358,13 +422,28 @@ export default function Exams() {
                             <button
                               className="w-full py-3 rounded-xl font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
                               style={{
-                                backgroundColor: "#ffd700",
+                                backgroundColor: typeInfo.isLink
+                                  ? "#ff9800"
+                                  : "#ffd700",
                                 color: "#3b003b",
-                                boxShadow: "0 4px 15px rgba(255, 215, 0, 0.3)",
+                                boxShadow: `0 4px 15px ${
+                                  typeInfo.isLink
+                                    ? "rgba(255, 152, 0, 0.3)"
+                                    : "rgba(255, 215, 0, 0.3)"
+                                }`,
                               }}
                             >
-                              <MdPlayArrow size={20} />
-                              ابدأ الإمتحان
+                              {typeInfo.isLink ? (
+                                <>
+                                  <FaExternalLinkAlt size={18} />
+                                  فتح الرابط
+                                </>
+                              ) : (
+                                <>
+                                  <MdPlayArrow size={20} />
+                                  ابدأ الإمتحان
+                                </>
+                              )}
                             </button>
                           )}
 
@@ -378,7 +457,9 @@ export default function Exams() {
                               }}
                             >
                               <FaEye size={18} />
-                              عرض الإمتحان
+                              {typeInfo.isLink
+                                ? "فتح الرابط مرة أخرى"
+                                : "عرض الإمتحان"}
                             </button>
                           )}
 
