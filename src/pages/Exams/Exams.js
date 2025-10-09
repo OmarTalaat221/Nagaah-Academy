@@ -117,8 +117,12 @@ export default function Exams() {
     // Handle link type exams
     if (exam.type === "link" || exam.type === "external") {
       if (exam.exam_link) {
-        // Open external link in new tab
-        window.open(exam.exam_link, "_blank", "noopener,noreferrer");
+        window.open(
+          exam.exam_link.match(/^https?:\/\//)
+            ? exam?.exam_link
+            : "https://" + exam?.exam_link,
+          "_blank"
+        );
       } else {
         console.error("No exam link provided for link type exam");
       }
